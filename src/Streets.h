@@ -1,32 +1,21 @@
 /**************************************************************************************************/
 
 /*
-* File: Waypoints.h
+* File: Streets.h
 * Author: Ray Weaver
 * NetID: rayweaver
 * Date: December 10, 2014
 */
 
 /**************************************************************************************************/
-
-
-#include <iostream>
-
 using namespace std;
 
-#ifndef Waypoints_H
-#define Waypoints_H
+#ifndef Streets_H
+#define Streets_H
 
-class Waypoints {
 
-public:
-	Waypoints();
-	Waypoints(string sentence);
-	~Waypoints();
+class Streets {
 
-private:
-	int id;
-	string waypointName;
 };
 
 #endif

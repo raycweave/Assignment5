@@ -8,20 +8,21 @@
 */
 
 /**************************************************************************************************/
+#ifndef WSParser_H
+#define WSParser_H
 
-#include "WAYPOINTS.h"
+#include "Waypoints.h"
 #include <iostream>
 #include <vector>
 #include <string>
 
 using namespace std;
 
-#ifndef WSParser_H
-#define WSParser_H
 
 class WSParser {
 public:
-	static vector<WAYPOINTS*> parseMapGraphFile(string filename);
+	static vector<Waypoints*> parseMapGraphFile(string filename);
+	static Waypoints* parseGraphFileSentence(string sentence);
 
 private:
 	WSParser();

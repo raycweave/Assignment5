@@ -20,6 +20,8 @@
 #include <iostream>
 #include <cstdlib>
 #include <cstdio>
+#include "Waypoints.h"
+#include "WSparser.h"
 
 using namespace std;
 
@@ -38,5 +40,19 @@ int main(int argc, char *argv[])
 		return -1;
 	}
 
+	WSParser::parseMapGraphFile(argv[3]);
+	
 
 }
+
+/*
+Printing it out
+
+cout << "Shortest path: " << startId << " to " << endId << "(" << minTime << " to " << maxTime << ")" << endl;
+cout << startWp << endl;
+while (not endp)
+print waypoints;
+
+cout << "Most reliable path: " << startId << " to " << endId << " (" << minTime << " to " << maxTime << ")" << endl;
+
+*/
