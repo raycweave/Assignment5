@@ -18,7 +18,7 @@
 
 using namespace std;
 
-vector<Waypoints*> WSParser::parseMapGraphFile(string filename) {
+vector<Waypoints*> WSParser::parseWaypointsGraphFile(string filename) {
 
 	fstream inputFile;
 	vector<Waypoints*> result;
@@ -34,6 +34,11 @@ vector<Waypoints*> WSParser::parseMapGraphFile(string filename) {
 			if (line.find("WAYPOINTS:") != string::npos)
 			{
 				continue;
+			}
+
+			if (line.find("STREETS:") != string::npos)
+			{
+				break;
 			}
 
 		temp = WSParser::parseGraphFileSentence(line);

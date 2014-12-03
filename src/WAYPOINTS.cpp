@@ -21,13 +21,16 @@ using namespace std;
 Waypoints::Waypoints(string sentence) {
 
 	string junk = "";
+	
 
 	istringstream inSS;	
 	inSS.clear();
 	inSS.str(sentence);
 
 	inSS >> id;
-	inSS >> waypointName;
+	this->waypointName = sentence.substr(2);
+	//inSS >> 
+	//inSS >> waypointName;
 	
 
 }

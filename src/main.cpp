@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
 		return -1;
 	}
 
-	WSParser::parseMapGraphFile(argv[3]);
+	WSParser::parseWaypointsGraphFile(argv[3]);
 	
 
 }
