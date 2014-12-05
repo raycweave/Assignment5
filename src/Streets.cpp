@@ -8,3 +8,28 @@
 */
 
 /**************************************************************************************************/
+
+#include "Streets.h"
+#include "Waypoints.h"
+
+#include <iostream>
+#include <string>
+#include <sstream>
+
+Streets::Streets(string sentence) {
+
+	string junk = "";
+
+
+	istringstream inSS;
+	inSS.clear();
+	inSS.str(sentence);
+
+	inSS >> startId;
+	inSS >> endId;
+	inSS >> minTravelTime;
+	inSS >> maxTravelTime;
+
+	return;
+
+}

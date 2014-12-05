@@ -28,9 +28,8 @@ Waypoints::Waypoints(string sentence) {
 	inSS.str(sentence);
 
 	inSS >> id;
-	this->waypointName = sentence.substr(2);
-	//inSS >> 
-	//inSS >> waypointName;
-	
+	waypointName = sentence.substr(2);
+
+	return;
 
 }

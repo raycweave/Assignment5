@@ -18,10 +18,10 @@
 
 using namespace std;
 
-vector<Waypoints*> WSParser::parseWaypointsGraphFile(string filename) {
+vector<Waypoints*> WSParser::parseMapGraphFileWaypoints(string filename) {
 
 	fstream inputFile;
-	vector<Waypoints*> result;
+	vector<Waypoints*> result1;
 	string line;
 	inputFile.open(filename.c_str());
 	Waypoints *temp = NULL;
@@ -31,47 +31,77 @@ vector<Waypoints*> WSParser::parseWaypointsGraphFile(string filename) {
 		while (!inputFile.eof())
 		{
 			getline(inputFile, line);
-			if (line.find("WAYPOINTS:") != string::npos)
-			{
-				continue;
-			}
 
-			if (line.find("STREETS:") != string::npos)
-			{
-				break;
-			}
+			/*Skips the line if it contains "WAYPOINTS"*/
+			if (line.find("WAYPOINTS:") != string::npos) { continue; }
 
-		temp = WSParser::parseGraphFileSentence(line);
-				
-
-				//FIXME
-				/*
-				store in junk to waypoints 
-				while line.find != ("STREETS") store items into waypoints
-				*/
-				
-				if (temp)
-				{
-					result.push_back(temp);
-				}
-
-				/*
-				else
-				if line find == streeets
-				store rest into streets
-				*/
-		}
-
-			
-
+			/*goes to the end*/
+			if (line == ""){ break; }
 	
+			temp = WSParser::parseGraphFileSentenceWaypoints(line);
+				
+			if (temp)
+			{
+				result1.push_back(temp);
+			}
+
+			temp = NULL;
+		}
 	}
-	return result;
+
+	return result1;
 }
 
-Waypoints* WSParser::parseGraphFileSentence(string sentence) {
+vector<Streets*> WSParser::parseMapGraphFileStreets(string filename) {
+
+	fstream inputFile;
+	vector<Streets*> result2;
+	string line;
+	inputFile.open(filename.c_str());
+	Streets *temp = NULL;
+	int count = 0;
+
+	if (inputFile.is_open())
+	{
+		while (!inputFile.eof())
+		{
+			if (count == 0) 
+			{
+				getline(inputFile, line);
+				if (line == "STREETS:") 
+				{ 
+					count++;
+				}
+			}
+			
+			if (count == 1) 
+			{
+				getline(inputFile, line);
+				temp = WSParser::parseGraphFileSentenceStreets(line);
+				if (temp)
+				{
+					result2.push_back(temp);
+				}
+				temp = NULL;
+			}	
+		}
+	}
+
+	return result2;
+}
+
+
+Waypoints* WSParser::parseGraphFileSentenceWaypoints(string sentence) {
 
 	Waypoints *result = new Waypoints(sentence);
+	return result;
+
+}
+
+
+Streets* WSParser::parseGraphFileSentenceStreets(string sentence) {
+
+	Streets *result = new Streets(sentence);
 	return result;
 
 }

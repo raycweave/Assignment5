@@ -40,15 +40,15 @@ int main(int argc, char *argv[])
 		return -1;
 	}
 
-	WSParser::parseWaypointsGraphFile(argv[3]);
+	WSParser::parseMapGraphFileWaypoints(argv[3]);
+	WSParser::parseMapGraphFileStreets(argv[3]);
 	
-
 }
 
 /*
 Printing it out
 
-cout << "Shortest path: " << startId << " to " << endId << "(" << minTime << " to " << maxTime << ")" << endl;
+cout << "Shortest path: " << argv[1] << " to " << argv[2] << "(" << minTime << " to " << maxTime << ")" << endl;
 cout << startWp << endl;
 while (not endp)
 print waypoints;

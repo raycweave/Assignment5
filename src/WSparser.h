@@ -22,9 +22,11 @@ using namespace std;
 
 class WSParser {
 public:
-	static vector<Waypoints*> parseWaypointsGraphFile(string filename);
-	static Waypoints* parseGraphFileSentence(string sentence);
-	static vector<Streets*> parseStreetGraphFile(string filename);
+	static vector<Waypoints*> parseMapGraphFileWaypoints(string filename);
+	static Waypoints* parseGraphFileSentenceWaypoints(string sentence);
+
+	static vector<Streets*> parseMapGraphFileStreets(string filename);
+	static Streets* parseGraphFileSentenceStreets(string sentence);
 
 private:
 	WSParser();
