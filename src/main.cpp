@@ -42,10 +42,15 @@ int main(int argc, char *argv[])
 		return -1;
 	}
 
-	DGraph *g = new DGraph();
+	DGraph g;
 
-	//WSParser::parseMapGraphFileWaypoints(argv[3]);
-	//WSParser::parseMapGraphFileStreets(argv[3]);
+
+
+	
+
+	g.WSParser::parseMapGraphFileWaypoints(g, argv[3]);
+		//WSParser::parseMapGraphFileWaypoints(g, argv[3]);
+	WSParser::parseMapGraphFileStreets(g, argv[3]);
 	
 }
 

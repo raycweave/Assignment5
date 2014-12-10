@@ -32,6 +32,10 @@ public:
 
 	int getEndId() { return endId; }
 
+	float getMinTravelTime() { return minTravelTime; }
+
+	float getMaxTravelTime() { return maxTravelTime; }
+
 private:
 
 	int startId;

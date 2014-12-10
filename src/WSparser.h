@@ -30,6 +30,8 @@ public:
 	bool parseMapGraphFileStreets(DGraph *g, string filename);
 	static Street* parseGraphFileSentenceStreets(string sentence);
 
+	 bool checkPossibleStreetErrors(DGraph *g, Street* street);
+	 bool checkPossibleWaypointErrors(DGraph *g, Waypoint* waypoint);
 };
 
 #endif
