@@ -11,6 +11,7 @@
 #ifndef WSParser_H
 #define WSParser_H
 
+#include "DGraph.h"
 #include "Waypoints.h"
 #include "Streets.h"
 #include <iostream>
@@ -22,15 +23,13 @@ using namespace std;
 
 class WSParser {
 public:
-	static vector<Waypoints*> parseMapGraphFileWaypoints(string filename);
-	static Waypoints* parseGraphFileSentenceWaypoints(string sentence);
 
-	static vector<Streets*> parseMapGraphFileStreets(string filename);
-	static Streets* parseGraphFileSentenceStreets(string sentence);
+	bool parseMapGraphFileWaypoints(DGraph *g, string filename);
+	static Waypoint* parseGraphFileSentenceWaypoints(string sentence);
 
-private:
-	WSParser();
-	~WSParser();
+	bool parseMapGraphFileStreets(DGraph *g, string filename);
+	static Street* parseGraphFileSentenceStreets(string sentence);
+
 };
 
 #endif

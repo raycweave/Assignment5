@@ -16,7 +16,13 @@
 #include <string>
 #include <sstream>
 
-Streets::Streets(string sentence) {
+Street::Street(Waypoint* adjWaypoint)
+: adjWaypoint(adjWaypoint)
+{
+	// nothing to do
+}
+
+Street::Street(string sentence) {
 
 	string junk = "";
 

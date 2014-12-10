@@ -20,8 +20,10 @@
 #include <iostream>
 #include <cstdlib>
 #include <cstdio>
+
 #include "Waypoints.h"
 #include "WSparser.h"
+#include "DGraph.h"
 
 using namespace std;
 
@@ -40,8 +42,10 @@ int main(int argc, char *argv[])
 		return -1;
 	}
 
-	WSParser::parseMapGraphFileWaypoints(argv[3]);
-	WSParser::parseMapGraphFileStreets(argv[3]);
+	DGraph *g = new DGraph();
+
+	//WSParser::parseMapGraphFileWaypoints(argv[3]);
+	//WSParser::parseMapGraphFileStreets(argv[3]);
 	
 }
 

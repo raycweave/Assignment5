@@ -8,26 +8,37 @@
 */
 
 /**************************************************************************************************/
+#include <string>
 
-#include <iostream>
 using namespace std;
 
 #ifndef Streets_H
 #define Streets_H
 
+class Waypoint;
 
-class Streets {
+class Street 
+{
 
 public:
-	Streets();
-	Streets(string sentence);
-	~Streets();
+
+	Street(Waypoint* adjWaypoint);
+
+	Street(string sentence);
+
+	Waypoint* adjWaypoint;
+
+	int getStartId() { return startId; }
+
+	int getEndId() { return endId; }
 
 private:
+
 	int startId;
 	int endId;
 	float minTravelTime;
 	float maxTravelTime;
+
 };
 
 #endif

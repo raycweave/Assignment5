@@ -11,6 +11,9 @@
 
 #include "WSparser.h"
 #include "Waypoints.h"
+#include "DGraph.h"
+#include "Streets.h"
+
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -18,13 +21,13 @@
 
 using namespace std;
 
-vector<Waypoints*> WSParser::parseMapGraphFileWaypoints(string filename) {
+bool WSParser::parseMapGraphFileWaypoints(DGraph *g, string filename) {
 
+	bool result1 = true;
 	fstream inputFile;
-	vector<Waypoints*> result1;
 	string line;
 	inputFile.open(filename.c_str());
-	Waypoints *temp = NULL;
+	Waypoint *temp = NULL;
 
 	if (inputFile.is_open())
 	{
@@ -42,7 +45,7 @@ vector<Waypoints*> WSParser::parseMapGraphFileWaypoints(string filename) {
 				
 			if (temp)
 			{
-				result1.push_back(temp);
+				g->addWaypoint(temp);
 			}
 
 			temp = NULL;
@@ -52,13 +55,13 @@ vector<Waypoints*> WSParser::parseMapGraphFileWaypoints(string filename) {
 	return result1;
 }
 
-vector<Streets*> WSParser::parseMapGraphFileStreets(string filename) {
+bool WSParser::parseMapGraphFileStreets(DGraph *g, string filename) {
 
 	fstream inputFile;
-	vector<Streets*> result2;
+	bool result2 = true;
 	string line;
 	inputFile.open(filename.c_str());
-	Streets *temp = NULL;
+	Street *temp = NULL;
 	int count = 0;
 
 	if (inputFile.is_open())
@@ -80,7 +83,9 @@ vector<Streets*> WSParser::parseMapGraphFileStreets(string filename) {
 				temp = WSParser::parseGraphFileSentenceStreets(line);
 				if (temp)
 				{
-					result2.push_back(temp);
+					
+					g->addStreet(temp->getStartId(), temp->getEndId());
+					//result2.push_back(temp);
 				}
 				temp = NULL;
 			}	
@@ -91,17 +96,17 @@ vector<Streets*> WSParser::parseMapGraphFileStreets(string filename) {
 }
 
 
-Waypoints* WSParser::parseGraphFileSentenceWaypoints(string sentence) {
+Waypoint* WSParser::parseGraphFileSentenceWaypoints(string sentence) {
 
-	Waypoints *result = new Waypoints(sentence);
+	Waypoint *result = new Waypoint(sentence);
 	return result;
 
 }
 
 
-Streets* WSParser::parseGraphFileSentenceStreets(string sentence) {
+Street* WSParser::parseGraphFileSentenceStreets(string sentence) {
 
-	Streets *result = new Streets(sentence);
+	Street *result = new Street(sentence);
 	return result;
 
 }
